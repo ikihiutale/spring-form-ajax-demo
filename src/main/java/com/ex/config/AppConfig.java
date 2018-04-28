@@ -58,4 +58,5 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         resolver.setViewClass (JstlView.class);
         return resolver;
     }
+	
 }

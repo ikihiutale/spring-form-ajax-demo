@@ -1,8 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -15,7 +13,8 @@
 		<script src="/js/script.js"></script>
 	</head>
 	<body>
-		<div class="container"> 
+		<div class="container retail-register-page"> 
+			<input type="hidden" class="success" value="${success}" />
 			<form:form method="post" action="/join" modelAttribute="employee">
 				<div class="form-group">
 	             	<form:label path="name">Name</form:label>
@@ -28,7 +27,7 @@
              		<form:errors path="email"/>
              		<!-- form:input type="email" path="email"/ -->
 		        </div>
-		       	<button type="submit" class="btn btn-primary">Submit</button>
+		       	<button type="submit" class="btn btn-primary btn-join-register">Submit</button>
 	        </form:form>
 	        
 	        <c:if test="${not empty info}">
