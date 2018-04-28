@@ -38,12 +38,12 @@ public class EmployeeController {
 	private static final String DEFAULT_PAGE = "employee";
 	private static final Logger LOG = LoggerFactory.getLogger(EmployeeController.class);
 	
-	@InitBinder
-    protected void initBinder(WebDataBinder binder) {
-		if (binder.getTarget() != null && Employee.class.equals(binder.getTarget().getClass())) {
-			binder.setValidator(new EmployeeValidator());
-		}
-    }
+//	@InitBinder
+//    protected void initBinder(WebDataBinder binder) {
+//		if (binder.getTarget() != null && Employee.class.equals(binder.getTarget().getClass())) {
+//			binder.setValidator(new EmployeeValidator());
+//		}
+//    }
 	
 	@Autowired
     private MessageSource messageSource;
@@ -54,32 +54,18 @@ public class EmployeeController {
 		return new Employee();
 	}
 	
-//    @GetMapping
-//    public String doRegister(final Model model,  @ModelAttribute(INFO_ATTR) final String info, 
-//    		@ModelAttribute(SUCCESS_ATTR) final Boolean success) {
-//    	
-//    	LOG.info("doRegister: info={}", info);
-//    	if (StringUtils.isNotBlank(info)) {
-//    		model.addAttribute(INFO_ATTR, info);
-//    	}
-//    	if (success) {
-//    		model.addAttribute(SUCCESS_ATTR, success);
-//    	}
-//    	
-//    	return getPage();
-//        
-//    }
-
     @GetMapping
-    public String doRegister(final Model model, @ModelAttribute(INFO_ATTR) final String info) {
+    public String doRegister(final Model model,  @ModelAttribute(INFO_ATTR) final String info, 
+    		@ModelAttribute(SUCCESS_ATTR) final String success) {
     	
-    	LOG.info("doRegister: info={}", info);
+    	LOG.info("doRegister: info={}, success={}", info, success);
     	if (StringUtils.isNotBlank(info)) {
     		model.addAttribute(INFO_ATTR, info);
     	}
-    	
-    	return getPage();
-        
+    	if (StringUtils.isNotBlank(success)) {
+    		model.addAttribute(SUCCESS_ATTR, success);
+    	}
+    	return getPage();        
     }
 
     @PostMapping
@@ -95,7 +81,6 @@ public class EmployeeController {
     	redirectAttr.addFlashAttribute(SUCCESS_ATTR, Boolean.TRUE);
     	return "redirect:/join";
     }
-    
     
     private String getPage() {
     	return DEFAULT_PAGE;

@@ -21,6 +21,5 @@ public class EmployeeValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		LOG.info("validate employee name {}", ((Employee)target).getName());
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "employee.name.required");
-		
 	}
 }

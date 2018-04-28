@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Employee {
 	
 	@NotNull(message = "{employee.name.required}")
+	@NotEmpty(message = "{employee.name.required}")
 	String name;
     
 	@NotNull(message = "{employee.email.required}")
