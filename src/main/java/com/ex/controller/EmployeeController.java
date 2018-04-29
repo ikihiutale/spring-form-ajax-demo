@@ -58,13 +58,15 @@ public class EmployeeController {
     public String doRegister(final Model model,  @ModelAttribute(INFO_ATTR) final String info, 
     		@ModelAttribute(SUCCESS_ATTR) final String success) {
     	
-    	LOG.info("doRegister: info={}, success={}", info, success);
+    	LOG.info("doRegister: info={}, success={} ++", info, success);
     	if (StringUtils.isNotBlank(info)) {
     		model.addAttribute(INFO_ATTR, info);
     	}
     	if (StringUtils.isNotBlank(success)) {
     		model.addAttribute(SUCCESS_ATTR, success);
     	}
+    	LOG.info("*** doRegister --");
+
     	return getPage();        
     }
 
@@ -72,6 +74,7 @@ public class EmployeeController {
     public String register(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, Model model,
 			final HttpServletRequest request, final HttpServletResponse response, 
 			final RedirectAttributes redirectAttr) {
+    	LOG.info("*** register redirect ++");
     	
     	if (result.hasErrors()) {
         	LOG.info("register error: {}", result);
@@ -79,6 +82,7 @@ public class EmployeeController {
         	return getPage();
         }
     	redirectAttr.addFlashAttribute(SUCCESS_ATTR, Boolean.TRUE);
+    	LOG.info("*** register redirect --");
     	return "redirect:/join";
     }
     
