@@ -21,7 +21,7 @@ var postForm = function ($this) {
             $success = $(document).find('.success-fade-out');
             if ($success.length && $success.is(":visible")) {
             	$success.fadeTo(fadeOutDelay, 0, function(){
-            		$('selector').css("visibility", "hidden");   
+            		$success.css("visibility", "hidden");   
             	}); 
             }
         }

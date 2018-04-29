@@ -14,7 +14,9 @@
 	</head>
 	<body>
 		<div class="container retail-register-page"> 
+		
 			<input type="hidden" class="success" value="${success}" />
+		
 			<form:form method="post" action="/join" modelAttribute="employee">
 				<div class="form-group">
 	             	<form:label path="name">Name</form:label>
